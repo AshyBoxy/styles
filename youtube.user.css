@@ -1,0 +1,144 @@
+/* ==UserStyle==
+@name           AshyBoxy youtube styles
+@namespace      ashyboxy.xyz/styles/youtube
+@version        0.1.0
+@description    youtube styles
+@author         AshyBoxy
+==/UserStyle== */
+@-moz-document domain("youtube.com") {
+    /* videos per row */
+    :root {
+        --ashyboxy-videos-per-row: 3;
+    }
+    @media (min-width: 1100px) {
+        :root {
+            --ashyboxy-videos-per-row: 4;
+        }
+    }
+    @media (min-width: 1500px) {
+        :root {
+            --ashyboxy-videos-per-row: 5;
+        }
+    }
+    ytd-rich-grid-renderer {
+        --ytd-rich-grid-items-per-row: var(--ashyboxy-videos-per-row) !important;
+        --ytd-rich-grid-item-margin: 12px !important;
+    }
+    ytd-rich-item-renderer {
+        --ytd-rich-grid-row-margin: 20px;
+        margin-left: calc(var(--ytd-rich-grid-item-margin) / 2) !important;
+    }
+
+    /* hide create video and voice search header buttons */
+    #buttons ytd-button-renderer.style-scope.ytd-masthead,
+    #voice-search-button {
+        display: none !important;
+    }
+    
+    /* collapse videos from following rows onto rows with empty space */
+    ytd-rich-section-renderer.style-scope.ytd-rich-grid-renderer {
+        display: none !important;
+    }
+    
+    /* for the next two, the item renderer is targetted to allow videos changing rows to work */
+    /* hide dismissable content e.g. "how was this video" */
+    ytd-rich-item-renderer:has(> #content > ytd-feed-nudge-renderer[is-dismissed] > #dismissed)
+    /*ytd-rich-item-renderer:has(> #content > ytd-rich-grid-media > #dismissed)*/
+    {
+        display: none !important;
+    }
+    
+    /* hide hidden videos (potentially other stuff too?) */
+    ytd-rich-item-renderer:has(> #content > ytd-rich-grid-media[is-dismissed]) {
+        display: none !important;
+    }
+    
+    /* disable frosted glass effect on the main page header */
+    #frosted-glass.with-chipbar.ytd-app {
+        /* --yt-frosted-glass-desktop */
+        background: rgb(15,15,15);
+        backdrop-filter: none;
+    }
+    
+    /* hide shorts shelf in watch next recommendations */
+    /*ytd-item-section-renderer.ytd-watch-next-secondary-results-renderer > #contents >*/ ytd-reel-shelf-renderer {
+        display: none;
+    }
+    
+    /* less rounded thumbnails */
+    a#thumbnail {
+        border-radius: 4px;
+    }
+    .yt-thumbnail-view-model--large, .ytThumbnailViewModelLarge {
+        border-radius: 4px;
+    }
+    .yt-thumbnail-view-model--medium, .ytThumbnailViewModelMedium {
+        border-radius: 4px;
+    }
+    /* mix stack */
+    .collections-stack-wiz__collection-stack1, .collections-stack-wiz__collection-stack2 {
+        border-radius: 4px;
+    }
+    
+    /* webscrobbler text */
+    #scrobbler-infobox-el {
+        > span {
+            /*opacity: 70%;*/
+            color: var(--yt-spec-text-secondary);
+            font-weight: 500;
+        }
+    }
+    
+    /* search bar */
+    yt-searchbox {
+        .ytSearchboxComponentInputBox {
+            border-radius: 10px 0 0 10px;
+        }
+        .ytSearchboxComponentSearchButton {
+            border-radius: 0 10px 10px 0;
+            width: 48px;
+        }
+    }
+    
+    ytd-player {
+        border-radius: 4px !important;
+    }
+
+    .yt-spec-button-shape-next--size-m {
+        --ashyboxy-button-radius: 10px;
+        border-radius: var(--ashyboxy-button-radius);
+    }
+    .yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start {
+        border-radius: var(--ashyboxy-button-radius) 0 0 var(--ashyboxy-button-radius);
+    }
+    .yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-end {
+        border-radius: 0 var(--ashyboxy-button-radius) var(--ashyboxy-button-radius) 0;
+    }
+    ytd-button-renderer.ytd-live-chat-frame {
+        /*border-radius: 4px !important;*/
+        /* the border looks weird with no margin and i'm too lazy to fix it */
+        margin: 4px !important;
+        .yt-spec-button-shape-next {
+            --ashyboxy-button-radius: 4px;
+        }
+    }
+    
+    .yt-spec-button-shape-next--size-xs {
+        --ashyboxy-button-radius: 4px;
+        border-radius: var(--ashyboxy-button-radius);
+    }
+    
+    #description.ytd-watch-metadata, #description-interaction > div,
+    #teaser-carousel > yt-video-metadata-carousel-view-model {
+        border-radius: 4px;
+    }
+    
+    .ytd-playlist-panel-renderer, ytd-live-chat-frame {
+        border-radius: 6px !important;
+    }
+    
+    .ytChipShapeChip {
+        border-radius: 4px;
+    }
+}
+
