@@ -1,0 +1,13 @@
+/* ==UserStyle==
+@name           Roboto
+@namespace      ashyboxy.xyz/styles/roboto
+@version        1.0.0
+@description    use roboto for everything on some sites which break with twemoji
+@author         AshyBoxy
+==/UserStyle== */
+
+@-moz-document domain("music.apple.com") {
+    * {
+        font-family: Roboto !important
+    }
+}
