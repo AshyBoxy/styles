@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           AshyBoxy youtube styles
 @namespace      ashyboxy.xyz/styles/youtube
-@version        0.2.3
+@version        0.2.4
 @description    youtube styles
 @author         AshyBoxy
 ==/UserStyle== */
@@ -278,5 +278,11 @@
     /* hide the ai button */
     #flexible-item-buttons > yt-button-view-model:has(>button-view-model>button[aria-label="Ask"]) {
         display: none;
+    }
+
+    /* make the collapsed description box take up more space */
+    #bottom-row > #description {
+        /* make it take as much space as possible, force other stuff in the row to use its min width */
+        flex-grow: 100;
     }
 }
