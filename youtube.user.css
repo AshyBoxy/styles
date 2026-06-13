@@ -144,5 +144,104 @@
     /* yt-lockup-view-model:has(notification-multi-action-renderer) {
         max-height: 40px;
     } */
-}
 
+
+    /* #region force small sidebar + horizontal sidebar recommendations */
+    /* stop the ridiculous new massive thumbnails in the sidebar */
+    /* notes:
+        ytd-watch-flexy has an attribute for whether the recommended videos are on the side or below the video
+        is-single-column for below
+        is-two-columns_ for the side
+    */
+    ytd-watch-flexy {
+        /* !important because these are set on the element */
+        --ytd-watch-flexy-sidebar-width: 402px !important;
+        --ytd-watch-compact-thumbnail-width: 168px !important;
+        --ytd-watch-flexy-sidebar-min-width: 300px !important;
+    }
+
+    /* force related videos in two columns mode to always show horizontally
+        youtube calculates which way it should be directed using some helper functions
+        they're too obfuscated for me to figure out
+        but .ytLockupViewModelVertical is used for e.g. in single column mode, so we can't just make it always horizontal
+    */
+    ytd-watch-flexy[is-two-columns_] {
+        .ytLockupViewModelVertical {
+            /* this is just copied from .ytLockupViewModelHorizontal */
+            -moz-box-orient: horizontal;
+            flex-direction: row;
+            height: inherit;
+
+            .ytLockupViewModelContentImage {
+                /* undoing vertical rules */
+                padding-bottom: inherit;
+                -mox-box-align: inherit;
+                align-items: inherit;
+                /* horizontal rules */
+                display: -moz-box;
+                display: flex;
+                -moz-box-flex: 0;
+                flex: none;
+                padding-right: 16px;
+                -moz-box-pack: center;
+                justify-content: center;
+                max-width: 500px;
+            }
+
+            /* horizontal rules */
+            .ytLockupViewModelMetadata {
+                -moz-box-flex: 1;
+                flex: 1;
+            }
+
+            >.ytLockupViewModelContentImage {
+                width: 168px;
+            }
+        }
+
+        /* undoing vertical rules */
+        .ytLockupViewModelVertical.ytLockupViewModelRichGridLegacyMargin {
+            .ytLockupViewModelContentImage {
+                padding-bottom: inherit;
+            }
+        }
+
+        /* horizontal rules */
+        .ytLockupViewModelVertical.ytLockupViewModelCollectionStack1 {
+            position: relative;
+            margin-top: 6px;
+        }
+        .ytLockupViewModelVertical.ytLockupViewModelCollectionStack2 {
+            position: relative;
+            margin-top: 10px;
+        }
+        .ytLockupViewModelVertical.ytLockupViewModelCompact .ytLockupViewModelContentImage {
+            padding-right: 8px;
+        }
+
+        /* it makes it a grid display if it's vertical apparently (rules for lockup container type 2) */
+        ytd-item-section-renderer[lockup-container-type="2"][is-grid-view-enabled] #contents.ytd-item-section-renderer {
+            display: inherit;
+            width: inherit;
+            /* other display differences are caused by grid specific display settings, so we're good */
+        }
+
+        /* metadata menu button (the three dots)
+            it's moved to the bottom right in vertical related videos, and hidden when not hovered in the sidebar */
+        .ytLockupMetadataViewModelMoveLockupOverflowMenuToBottomRight {
+            min-height: inherit;
+            .ytLockupMetadataViewModelTitle {
+                padding-right: 24px;
+            }
+        }
+        .ytLockupMetadataViewModelMenuButton.ytLockupMetadataViewModelBottomRight {
+            transition: inherit;
+            top: -6px;
+            right: -10px;
+            bottom: unset;
+            transform: inherit;
+            opacity: inherit;
+        }
+    }
+    /* #endregion force small sidebar + horizontal sidebar recommendations */
+}
