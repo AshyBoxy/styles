@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           AshyBoxy youtube styles
 @namespace      ashyboxy.xyz/styles/youtube
-@version        0.2.0
+@version        0.2.1
 @description    youtube styles
 @author         AshyBoxy
 ==/UserStyle== */
@@ -161,12 +161,26 @@
     */
 
     /* TODO: use variables for this */
+    ytd-watch-flexy {
+        /* these two seem to default to 300px and 550px in the experiment flags youtube gives me, 200px and 700px in the flags someone else gets */
+        --ashyboxy-flexy-sidebar-min-width: 300px;
+        /* i use this because i like it, it's what "kevlar_watch_secondary_width" is in my flags. possibly that was used instead of max-width in the not big sidebar ui? */
+        --ashyboxy-flexy-sidebar-max-width: 402px;
+        /* is 168px in the flags i get, 62.5% in the flags someone else gets. "web_watch_compact_thumbnail_width_string" */
+        --ashyboxy-flexy-thumbnail-width: 168px;
+    }
 
     ytd-watch-flexy {
         /* !important because these are set on the element */
-        --ytd-watch-flexy-sidebar-width: 402px !important;
+        /* --ytd-watch-flexy-sidebar-width: 402px !important; */
         --ytd-watch-compact-thumbnail-width: 168px !important;
-        --ytd-watch-flexy-sidebar-min-width: 300px !important;
+        --ytd-watch-flexy-sidebar-min-width: var(--ashyboxy-flexy-sidebar-min-width) !important;
+        --ytd-watch-flexy-sidebar-max-width: var(--ashyboxy-flexy-sidebar-max-width) !important;
+
+        #secondary {
+            /* this one is only used for calculations i think? so we need to set it manually */
+            max-width: var(--ashyboxy-flexy-sidebar-max-width) !important;
+        }
     }
 
     /* force related videos in two columns mode to always show horizontally
@@ -251,6 +265,12 @@
             bottom: unset;
             transform: inherit;
             opacity: inherit;
+        }
+
+        /* thumbnail size */
+        .ytLockupViewModelContentImage {
+            /* set on the element */
+            width: var(--ashyboxy-flexy-thumbnail-width) !important;
         }
     }
     /* #endregion force small sidebar + horizontal sidebar recommendations */
