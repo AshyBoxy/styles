@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           AshyBoxy youtube styles
 @namespace      ashyboxy.xyz/styles/youtube
-@version        0.2.2
+@version        0.2.3
 @description    youtube styles
 @author         AshyBoxy
 ==/UserStyle== */
@@ -274,4 +274,9 @@
         }
     }
     /* #endregion force small sidebar + horizontal sidebar recommendations */
+
+    /* hide the ai button */
+    #flexible-item-buttons > yt-button-view-model:has(>button-view-model>button[aria-label="Ask"]) {
+        display: none;
+    }
 }
