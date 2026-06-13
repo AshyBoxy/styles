@@ -48,7 +48,7 @@
     /* hide dismissable content e.g. "how was this video" */
     ytd-rich-item-renderer:has(> #content > ytd-feed-nudge-renderer[is-dismissed] > #dismissed)
     /*ytd-rich-item-renderer:has(> #content > ytd-rich-grid-media > #dismissed)*/
-    {
+        {
         display: none !important;
     }
 
@@ -61,12 +61,13 @@
     /* TODO: the contents behind are visible through the header for a moment when scrolling down from the very top */
     #frosted-glass.with-chipbar.ytd-app {
         /* --yt-frosted-glass-desktop */
-        background: rgb(15,15,15);
+        background: rgb(15, 15, 15);
         backdrop-filter: none;
     }
 
     /* hide shorts shelf in watch next recommendations */
-    /*ytd-item-section-renderer.ytd-watch-next-secondary-results-renderer > #contents >*/ ytd-reel-shelf-renderer {
+    /*ytd-item-section-renderer.ytd-watch-next-secondary-results-renderer > #contents >*/
+    ytd-reel-shelf-renderer {
         display: none;
     }
 
@@ -202,7 +203,7 @@
                 flex: 1;
             }
 
-            >.ytLockupViewModelContentImage {
+            > .ytLockupViewModelContentImage {
                 width: 168px;
             }
         }

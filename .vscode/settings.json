@@ -1,0 +1,5 @@
+{
+    "css.format.newlineBetweenRules": false,
+    "css.format.newlineBetweenSelectors": false,
+    "css.format.spaceAroundSelectorSeparator": true
+}
