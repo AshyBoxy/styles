@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           AshyBoxy youtube styles
 @namespace      ashyboxy.xyz/styles/youtube
-@version        0.2.1
+@version        0.2.2
 @description    youtube styles
 @author         AshyBoxy
 ==/UserStyle== */
@@ -198,7 +198,7 @@
             .ytLockupViewModelContentImage {
                 /* undoing vertical rules */
                 padding-bottom: inherit;
-                -mox-box-align: inherit;
+                -moz-box-align: inherit;
                 align-items: inherit;
                 /* horizontal rules */
                 display: -moz-box;
