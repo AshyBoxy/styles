@@ -6,6 +6,10 @@
 @author         AshyBoxy
 ==/UserStyle== */
 @-moz-document domain("youtube.com") {
+    /* TODO:
+        enabling channel avatars on sidebar recommended videos seems easily doable
+    */
+
     /* videos per row */
     :root {
         --ashyboxy-videos-per-row: 3;
@@ -54,6 +58,7 @@
     }
 
     /* disable frosted glass effect on the main page header */
+    /* TODO: the contents behind are visible through the header for a moment when scrolling down from the very top */
     #frosted-glass.with-chipbar.ytd-app {
         /* --yt-frosted-glass-desktop */
         background: rgb(15,15,15);
@@ -153,6 +158,9 @@
         is-single-column for below
         is-two-columns_ for the side
     */
+
+    /* TODO: use variables for this */
+
     ytd-watch-flexy {
         /* !important because these are set on the element */
         --ytd-watch-flexy-sidebar-width: 402px !important;
